@@ -65,9 +65,10 @@ img { max-width: 100%; display: block; }
     color: #fff;
 }
 
-.brand img { 
+.brand img {
     width: 84px;
-    border-radius: 5px; 
+    border-radius: 5px;
+    aspect-ratio: auto;
 }
 
 .menu {
@@ -308,6 +309,7 @@ h1 .accent { color: var(--or2); }
 .logo-main {
     width: 280px;
     margin: 0 auto 12px;
+    aspect-ratio: auto;
     filter: drop-shadow(0 0 12px rgba(255,255,255,.55)) drop-shadow(0 0 30px rgba(255,255,255,.25)) drop-shadow(0 3px 8px rgba(0,0,0,.9));
 }
 
