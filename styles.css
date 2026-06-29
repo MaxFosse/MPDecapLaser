@@ -284,8 +284,8 @@ img { max-width: 100%; display: block; }
 @keyframes laser-scan {
   0%   { transform: translateY(50px); opacity: 0; }
   8%   { opacity: 1; }
-  85%  { transform: translateY(725px); opacity: 1; }
-  100% { transform: translateY(725px); opacity: 0; }
+  85%  { transform: translateY(775px); opacity: 1; }
+  100% { transform: translateY(775px); opacity: 0; }
 }
 
 .wrap {
