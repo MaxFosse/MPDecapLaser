@@ -1,0 +1,310 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Galerie | MP Décap Laser</title>
+<link rel="icon" href="assets/logo.webp" type="image/webp"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;800;900&family=Barlow:wght@300;400&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
+<style>
+  .galerie-hero {
+    padding: 60px 24px 40px;
+    text-align: center;
+    background: var(--noir);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .galerie-hero h1 {
+    font-size: 52px;
+    margin: 8px 0 12px;
+  }
+
+  .galerie-hero p {
+    color: var(--txt2);
+    font-size: 17px;
+    font-weight: 300;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  /* ── SECTION VIDÉOS ── */
+  .galerie-section {
+    padding: 56px 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .galerie-section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .16em;
+    color: var(--or2);
+    margin-bottom: 8px;
+  }
+
+  .galerie-section h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 36px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: #fff;
+    margin: 0 0 28px;
+  }
+
+  /* ── GRILLE VIDÉOS ── */
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .video-item {
+    background: var(--gris2);
+    border: 1px solid var(--border-subtle);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .video-item video {
+    width: 100%;
+    display: block;
+    background: #000;
+  }
+
+  .video-item .caption {
+    padding: 14px 16px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--txt2);
+  }
+
+  /* ── GRILLE PHOTOS ── */
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+
+  .photo-item {
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--gris2);
+    border: 1px solid var(--border-subtle);
+    cursor: pointer;
+    transition: border-color .25s, transform .25s;
+  }
+
+  .photo-item:hover {
+    border-color: var(--border);
+    transform: translateY(-3px);
+  }
+
+  .photo-item img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .photo-item .caption {
+    padding: 10px 14px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--txt2);
+  }
+
+  .section-divider {
+    border: none;
+    border-top: 1px solid var(--border-subtle);
+    margin: 0;
+  }
+
+  /* ── LIGHTBOX ── */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.92);
+    z-index: 500;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+
+  .lightbox.open { display: flex; }
+
+  .lightbox img {
+    max-width: 90vw;
+    max-height: 88vh;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: 16px; right: 20px;
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--txt2);
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex; align-items: center; justify-content: center;
+    transition: all .2s;
+  }
+
+  .lightbox-close:hover { border-color: var(--or); color: var(--or2); }
+
+  @media(max-width:850px) {
+    .video-grid { grid-template-columns: 1fr; }
+    .photo-grid { grid-template-columns: repeat(2, 1fr); }
+    .galerie-hero h1 { font-size: 36px; }
+  }
+
+  @media(max-width:480px) {
+    .photo-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightbox-img" src="" alt=""/>
+</div>
+
+<header class="top">
+  <div class="nav">
+    <div class="brand"><a href="index.html"><img alt="Logo MP Décap Laser" src="assets/logo.webp"/></a></div>
+    <a href="index.html" class="btn dark" style="font-size:13px;padding:9px 16px;">← Retour au site</a>
+    <a class="call" href="tel:+33684789984">06 84 78 99 84</a>
+  </div>
+</header>
+
+<div class="galerie-hero">
+  <div class="kicker">MP Décap Laser</div>
+  <h1>Galerie <span class="accent">vidéos</span> & photos</h1>
+  <p>Retrouvez ici toutes nos réalisations, démonstrations et exemples de décapage laser.</p>
+</div>
+
+<main>
+
+  <!-- ══════════════════════════════════════════
+       VIDÉOS
+  ══════════════════════════════════════════ -->
+  <section style="background:var(--noir);">
+    <div class="galerie-section">
+      <p class="galerie-section-title">Démonstrations</p>
+      <h2>Vidéos</h2>
+      <div class="video-grid">
+
+        <!-- VIDÉO 1 -->
+        <div class="video-item">
+          <video controls muted playsinline preload="metadata">
+            <source src="assets/decapage-bois-video.mp4" type="video/mp4"/>
+          </video>
+          <p class="caption">Décapage laser sur bois</p>
+        </div>
+
+        <!-- VIDÉO 2 - ajouter ici -->
+        <!-- <div class="video-item">
+          <video controls muted playsinline preload="metadata">
+            <source src="assets/votre-video.mp4" type="video/mp4"/>
+          </video>
+          <p class="caption">Description de la vidéo</p>
+        </div> -->
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider"/>
+
+  <!-- ══════════════════════════════════════════
+       PHOTOS
+  ══════════════════════════════════════════ -->
+  <section style="background:var(--gris);">
+    <div class="galerie-section">
+      <p class="galerie-section-title">Réalisations</p>
+      <h2>Photos</h2>
+      <div class="photo-grid">
+
+        <!-- PHOTOS - ajouter librement -->
+        <div class="photo-item" onclick="openLightbox('assets/rust.webp', 'Élimination de rouille')">
+          <img src="assets/rust.webp" alt="Élimination de rouille" loading="lazy"/>
+          <p class="caption">Élimination de rouille</p>
+        </div>
+
+        <div class="photo-item" onclick="openLightbox('assets/auto.webp', 'Pièces automobiles')">
+          <img src="assets/auto.webp" alt="Pièces automobiles" loading="lazy"/>
+          <p class="caption">Pièces automobiles</p>
+        </div>
+
+        <div class="photo-item" onclick="openLightbox('assets/oil.webp', 'Dégraissage industriel')">
+          <img src="assets/oil.webp" alt="Dégraissage industriel" loading="lazy"/>
+          <p class="caption">Dégraissage industriel</p>
+        </div>
+
+        <div class="photo-item" onclick="openLightbox('assets/tool.webp', 'Outillage')">
+          <img src="assets/tool.webp" alt="Outillage" loading="lazy"/>
+          <p class="caption">Outillage</p>
+        </div>
+
+        <div class="photo-item" onclick="openLightbox('assets/detail_laser.webp', 'Laser en action')">
+          <img src="assets/detail_laser.webp" alt="Laser en action" loading="lazy"/>
+          <p class="caption">Laser en action</p>
+        </div>
+
+        <div class="photo-item" onclick="openLightbox('assets/decapage-bois-porte.webp', 'Décapage bois')">
+          <img src="assets/decapage-bois-porte.webp" alt="Décapage bois" loading="lazy"/>
+          <p class="caption">Décapage bois</p>
+        </div>
+
+        <!-- AJOUTER UNE PHOTO :
+        <div class="photo-item" onclick="openLightbox('assets/votre-photo.jpg', 'Description')">
+          <img src="assets/votre-photo.jpg" alt="Description" loading="lazy"/>
+          <p class="caption">Description</p>
+        </div>
+        -->
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2026 MP Décap Laser</p>
+</footer>
+
+<script>
+  function openLightbox(src, alt) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox-img').alt = alt;
+    document.getElementById('lightbox').classList.add('open');
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeLightbox();
+  });
+</script>
+
+</body>
+</html>
