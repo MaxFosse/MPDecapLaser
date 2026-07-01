@@ -5,12 +5,24 @@
   "h1_accent": "laser",
   "h1_post": "haute précision",
   "lead": "Une technologie écologique, précise et respectueuse de vos matériaux : bois, métal, pierre et qui s'inscrit pour le patrimoine, l'industrie, la collectivité et les particuliers.",
-  "btn_primary": "Demander un devis",
+  "btn_primary": "Demander un devi",
   "btn_secondary": "Voir les prestations",
   "badges": [
-    { "titre": "Précision maximale",    "sous": "Travail localisé" },
-    { "titre": "Solution écologique",   "sous": "Sans abrasif" },
-    { "titre": "Sans produit chimique", "sous": "Peu de déchets" },
-    { "titre": "Efficace",              "sous": "Ramène la matière d'origine" }
+    {
+      "titre": "Précision maximale",
+      "sous": "Travail localisé"
+    },
+    {
+      "titre": "Solution écologique",
+      "sous": "Sans abrasif"
+    },
+    {
+      "titre": "Sans produit chimique",
+      "sous": "Peu de déchets"
+    },
+    {
+      "titre": "Efficace",
+      "sous": "Ramène la matière d'origine"
+    }
   ]
 }
