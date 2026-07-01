@@ -1,0 +1,18 @@
+{
+  "hero_sous": "Retrouvez ici toutes nos réalisations, démonstrations et exemples de décapage laser.",
+  "videos_kicker": "Démonstrations",
+  "videos_titre": "Vidéos",
+  "photos_kicker": "Réalisations",
+  "photos_titre": "Photos",
+  "videos": [
+    { "src": "assets/decapage-bois-video.mp4", "caption": "Décapage laser sur bois" }
+  ],
+  "photos": [
+    { "image": "assets/rust.webp",                  "alt": "Élimination de rouille",     "caption": "Élimination de rouille" },
+    { "image": "assets/auto.webp",                  "alt": "Pièces automobiles",          "caption": "Pièces automobiles" },
+    { "image": "assets/oil.webp",                   "alt": "Dégraissage industriel",      "caption": "Dégraissage industriel" },
+    { "image": "assets/tool.webp",                  "alt": "Outillage",                   "caption": "Outillage" },
+    { "image": "assets/detail_laser.webp",          "alt": "Laser en action",             "caption": "Laser en action" },
+    { "image": "assets/decapage-bois-porte.webp",   "alt": "Décapage bois",               "caption": "Décapage bois" }
+  ]
+}
