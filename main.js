@@ -14,7 +14,7 @@ function closeMobileMenu() {
 }
 
 /* ═══════════════════════════════════════════════════════════
-   ACTIVITÉS — show / hide
+   ACTIVITÉS: show / hide
 ═══════════════════════════════════════════════════════════ */
 function showActivite(id) {
   document.getElementById('activites-grid').style.display = 'none';
@@ -30,7 +30,7 @@ function hideActivite() {
 }
 
 /* ═══════════════════════════════════════════════════════════
-   FORMULAIRE — EmailJS
+   FORMULAIRE: EmailJS
 ═══════════════════════════════════════════════════════════ */
 (function () {
   const EMAILJS_PUBLIC_KEY  = '6UGo377_ymCKmYMxR';
@@ -82,31 +82,26 @@ function hideActivite() {
 })();
 
 /* ═══════════════════════════════════════════════════════════
-   CHARGEMENT CONTENU — content/homepage.json
+   CHARGEMENT CONTENU -> fichiers JSON
 ═══════════════════════════════════════════════════════════ */
 
 function el(id) { return document.getElementById(id); }
 
-function renderHomepage(d) {
-
-  /* ── Tagline banner ── */
-  if (el('tagline-text')) el('tagline-text').textContent = d.tagline_banner;
-
-  /* ── Héro ── */
-  const h = d.hero;
-  if (el('hero-kicker'))       el('hero-kicker').textContent = h.kicker;
-  if (el('hero-h1'))           el('hero-h1').innerHTML = `${h.h1_pre} <span class="accent">${h.h1_accent}</span><br>${h.h1_post}`;
-  if (el('hero-lead'))         el('hero-lead').textContent = h.lead;
-  if (el('hero-btn-primary'))  el('hero-btn-primary').textContent = h.btn_primary;
-  if (el('hero-btn-secondary'))el('hero-btn-secondary').textContent = h.btn_secondary;
+function renderHero(h) {
+  if (el('tagline-text'))      el('tagline-text').textContent      = h.tagline_banner;
+  if (el('hero-kicker'))       el('hero-kicker').textContent       = h.kicker;
+  if (el('hero-h1'))           el('hero-h1').innerHTML             = `${h.h1_pre} <span class="accent">${h.h1_accent}</span><br>${h.h1_post}`;
+  if (el('hero-lead'))         el('hero-lead').textContent         = h.lead;
+  if (el('hero-btn-primary'))  el('hero-btn-primary').textContent  = h.btn_primary;
+  if (el('hero-btn-secondary'))el('hero-btn-secondary').textContent= h.btn_secondary;
   if (el('hero-badges')) {
     el('hero-badges').innerHTML = h.badges.map(b =>
       `<div class="badge"><b>${b.titre}</b><span>${b.sous}</span></div>`
     ).join('');
   }
+}
 
-  /* ── Réalisations ── */
-  const r = d.realisations;
+function renderRealisations(r) {
   if (el('real-titre')) el('real-titre').textContent = r.titre;
   if (el('real-sous'))  el('real-sous').textContent  = r.sous;
 
@@ -135,60 +130,58 @@ function renderHomepage(d) {
       </div>`;
   }
 
-  /* ── Vidéo ── */
-  const v = d.video;
-  if (el('video-kicker')) el('video-kicker').textContent = v.kicker;
-  if (el('video-titre'))  el('video-titre').textContent  = v.titre;
-  if (v.src && el('main-video-source')) {
-    el('main-video-source').src = v.src;
+  if (el('video-kicker')) el('video-kicker').textContent = r.video_kicker;
+  if (el('video-titre'))  el('video-titre').textContent  = r.video_titre;
+  if (r.video_src && el('main-video-source')) {
+    el('main-video-source').src = r.video_src;
     el('main-video').load();
   }
+}
 
-  /* ── Activités ── */
-  const act = d.activites;
+function renderActivites(act) {
   if (el('activites-kicker')) el('activites-kicker').textContent = act.kicker;
   if (el('activites-titre'))  el('activites-titre').textContent  = act.titre;
 
   const cardsEl = el('activites-cards');
-  if (cardsEl) {
-    act.items.forEach(item => {
-      const card = document.createElement('div');
-      card.className = 'real-card activite-card';
-      card.setAttribute('onclick', `showActivite('${item.id}')`);
-      card.innerHTML = `
-        <div class="real-card-emoji"><img src="${item.icon}" alt="${item.card_titre}" loading="lazy"/></div>
-        <div><h3>${item.card_titre}</h3><p>${item.card_desc}</p></div>`;
-      cardsEl.appendChild(card);
+  if (!cardsEl) return;
 
-      /* ── Détail de l'activité ── */
-      const det = el('detail-' + item.id);
-      if (!det) return;
+  act.items.forEach(item => {
+    const card = document.createElement('div');
+    card.className = 'real-card activite-card';
+    card.setAttribute('onclick', `showActivite('${item.id}')`);
+    card.innerHTML = `
+      <div class="real-card-emoji"><img src="${item.icon}" alt="${item.card_titre}" loading="lazy"/></div>
+      <div><h3>${item.card_titre}</h3><p>${item.card_desc}</p></div>`;
+    cardsEl.appendChild(card);
 
-      const imgHTML  = `<div class="section-photo"><img src="${item.detail_image}" alt="${item.detail_titre}" loading="lazy"/></div>`;
-      let   extraHTML = '';
-      if (item.chips && item.chips.length) {
-        extraHTML = `<div class="chips">${item.chips.map(c => `<span class="chip">${c}</span>`).join('')}</div>`;
-      } else if (item.info_panel) {
-        extraHTML = `<div class="info-panel"><b class="gold-txt">Applications :</b><br>${item.info_panel}</div>`;
-      }
-      const citationHTML = item.citation
-        ? `<p style="font-size:22px;border-left:4px solid #c0913a;padding-left:18px;margin:18px 0">${item.citation}</p>`
-        : '';
+    const det = el('detail-' + item.id);
+    if (!det) return;
 
-      const textBlock = `
-        <div>
-          <div class="kicker">${item.detail_kicker}</div>
-          <h3>${item.detail_titre}</h3>
-          <p class="lead">${item.detail_lead}</p>
-          ${citationHTML}
-          ${extraHTML}
-        </div>`;
+    const imgHTML = `<div class="section-photo"><img src="${item.detail_image}" alt="${item.detail_titre}" loading="lazy"/></div>`;
+    let extraHTML = '';
+    if (item.chips && item.chips.length) {
+      extraHTML = `<div class="chips">${item.chips.map(c => `<span class="chip">${c}</span>`).join('')}</div>`;
+    } else if (item.info_panel) {
+      extraHTML = `<div class="info-panel"><b class="gold-txt">Applications :</b><br>${item.info_panel}</div>`;
+    }
+    const citationHTML = item.citation
+      ? `<p style="font-size:22px;border-left:4px solid #c0913a;padding-left:18px;margin:18px 0">${item.citation}</p>`
+      : '';
 
-      det.innerHTML = `<div class="split">${item.image_droite ? textBlock + imgHTML : imgHTML + textBlock}</div>`;
-    });
-  }
+    const textBlock = `
+      <div>
+        <div class="kicker">${item.detail_kicker}</div>
+        <h3>${item.detail_titre}</h3>
+        <p class="lead">${item.detail_lead}</p>
+        ${citationHTML}
+        ${extraHTML}
+      </div>`;
 
-  /* ── Prestations ── */
+    det.innerHTML = `<div class="split">${item.image_droite ? textBlock + imgHTML : imgHTML + textBlock}</div>`;
+  });
+}
+
+function renderPrestations(d) {
   const p = d.prestations;
   if (el('prest-titre')) el('prest-titre').textContent = p.titre;
   if (el('prest-sous'))  el('prest-sous').textContent  = p.sous;
@@ -201,7 +194,6 @@ function renderHomepage(d) {
       </div>`).join('');
   }
 
-  /* ── Tarifs ── */
   const t = d.tarifs;
   if (el('tarifs-titre')) el('tarifs-titre').textContent = t.titre;
   if (el('tarifs-lead'))  el('tarifs-lead').textContent  = t.lead;
@@ -213,13 +205,12 @@ function renderHomepage(d) {
       <ul>${t.panel_items.map(i => `<li>${i}</li>`).join('')}</ul>
       <p>${t.panel_conclusion}</p>`;
   }
+}
 
-  /* ── Contact ── */
-  const c = d.contact;
+function renderContact(c) {
   if (el('contact-kicker')) el('contact-kicker').textContent = c.kicker;
   if (el('contact-titre'))  el('contact-titre').textContent  = c.titre;
 
-  /* Mettre à jour les liens téléphone partout */
   ['nav-tel', 'mobile-tel'].forEach(id => {
     const a = el(id);
     if (a) { a.href = `tel:+33${c.telephone.replace(/\s/g,'').replace(/^0/,'')}`; a.textContent = c.telephone; }
@@ -235,7 +226,17 @@ function renderHomepage(d) {
   }
 }
 
-fetch('content/homepage.json')
-  .then(r => r.json())
-  .then(renderHomepage)
-  .catch(err => console.error('content/homepage.json introuvable :', err));
+/* Chargement de tous les fichiers en parallèle */
+Promise.all([
+  fetch('content/hero.json').then(r => r.json()),
+  fetch('content/realisations.json').then(r => r.json()),
+  fetch('content/activites.json').then(r => r.json()),
+  fetch('content/prestations.json').then(r => r.json()),
+  fetch('content/contact.json').then(r => r.json()),
+]).then(([hero, real, act, prest, contact]) => {
+  renderHero(hero);
+  renderRealisations(real);
+  renderActivites(act);
+  renderPrestations(prest);
+  renderContact(contact);
+}).catch(err => console.error('Erreur chargement contenu :', err));

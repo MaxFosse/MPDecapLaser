@@ -1,0 +1,34 @@
+{
+  "titre": "Exemples de décapage laser",
+  "sous": "Photos réelles : bois, automobile, peinture, rouille, huile et échantillons de nettoyage.",
+  "cartes": [
+    { "image": "assets/decapage-bois-porte.webp", "alt": "Décapage laser sur porte en bois ancienne à Besançon",               "titre": "Décapage bois",         "desc": "Essai sur porte / menuiserie bois, idéal pour le travail patrimonial.", "centree": false },
+    { "image": "assets/auto.webp",                 "alt": "Nettoyage laser de culasse automobile - élimination huile et résidus", "titre": "Pièces automobiles",    "desc": "Nettoyage de culasse, pièces mécaniques et supports techniques.",       "centree": false },
+    { "image": "assets/suppression-peinture-sans-texte.webp", "alt": "Suppression de peinture au laser sur carrosserie automobile", "titre": "Suppression peinture", "desc": "Décapage carrosserie, peinture automobile et éléments peints.",        "centree": false },
+    { "image": "assets/rust.webp",                 "alt": "Enlèvement de rouille au laser sur métal - décapage localisé",        "titre": "Rouille et oxydation",  "desc": "Décapage localisé des surfaces rouillées avant finition.",             "centree": false },
+    { "image": "assets/tube.webp",                 "alt": "Tube métallique oxydé décapé au laser - essai de réglage",            "titre": "Métal industriel",      "desc": "Essai laser sur tube métallique oxydé.",                               "centree": false },
+    { "image": "assets/oil.webp",                  "alt": "Dégraissage laser industriel - nettoyage huile et encrassement",      "titre": "Huile et encrassement", "desc": "Nettoyage industriel : huile, graisse et résidus.",                    "centree": false },
+    { "image": "assets/samples.webp",              "alt": "Comparaison échantillons nettoyage laser sur différents matériaux",   "titre": "Échantillons",          "desc": "Vue globale des différents essais de nettoyage.",                      "centree": true  },
+    { "image": "assets/detail_laser.webp",         "alt": "Faisceau laser en action sur métal - MP Décap Laser Besançon",       "titre": "Laser en action",       "desc": "Visuel dynamique pour présenter la technologie.",                      "centree": true  }
+  ],
+  "graffiti": {
+    "titre": "Effacement de graffitis et tags",
+    "texte": "Le décapage laser permet l'élimination précise des graffitis, peintures, marquages et tags sur de nombreux supports sans abrasion agressive.",
+    "applications": [
+      "Façades en pierre naturelle",
+      "Monuments et bâtiments historiques",
+      "Béton, briques et maçonneries",
+      "Métaux et ouvrages industriels",
+      "Mobilier urbain"
+    ],
+    "avantages": [
+      "Intervention ciblée",
+      "Respect du support d'origine",
+      "Sans sablage ni produit chimique agressif",
+      "Solution adaptée aux ouvrages sensibles et patrimoniaux"
+    ]
+  },
+  "video_kicker": "Démonstration",
+  "video_titre": "Vidéo de décapage laser",
+  "video_src": "assets/decapage-bois-video.mp4"
+}

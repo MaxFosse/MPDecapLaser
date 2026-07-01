@@ -1,0 +1,62 @@
+{
+  "kicker": "Nos domaines d'intervention",
+  "titre": "Choisissez votre activité",
+  "items": [
+    {
+      "id": "particuliers",
+      "icon": "assets/icon/particuliers.webp",
+      "card_titre": "PARTICULIERS",
+      "card_desc": "Portails, volets, meubles, poutres, automobiles, motos, jantes, outils anciens et effacement de graffitis...",
+      "detail_kicker": "Pour les particuliers",
+      "detail_titre": "Un service accessible pour vos projets personnels",
+      "detail_lead": "Portails rouillés, volets à décaper, meubles anciens, jantes ou outils : le laser s'adapte à chaque situation sans abîmer le support.",
+      "detail_image": "assets/car.webp",
+      "image_droite": true,
+      "chips": ["Portails", "Volets", "Automobile", "Moto & jantes", "Outils anciens", "Graffitis"],
+      "info_panel": null,
+      "citation": null
+    },
+    {
+      "id": "collectivites",
+      "icon": "assets/icon/collectivites.webp",
+      "card_titre": "COLLECTIVITÉS",
+      "card_desc": "Effacement de graffitis, mobilier urbain, monuments, bâtiments publics, écoles, mairies et patrimoine communal...",
+      "detail_kicker": "Pour les collectivités",
+      "detail_titre": "Décapage laser au service du patrimoine public",
+      "detail_lead": "Effacement de graffitis, restauration du mobilier urbain, entretien des monuments et bâtiments communaux sans projection d'abrasif ni produit chimique.",
+      "detail_image": "assets/graffiti.webp",
+      "image_droite": true,
+      "chips": ["Graffitis", "Mobilier urbain", "Monuments", "Bâtiments publics", "Mairies", "Écoles"],
+      "info_panel": null,
+      "citation": null
+    },
+    {
+      "id": "industrie",
+      "icon": "assets/icon/industrie.webp",
+      "card_titre": "INDUSTRIE",
+      "card_desc": "Moules, outillages, pièces mécaniques, dégraissage, préparation peinture, maintenance industrielle et préparation de soudure...",
+      "detail_kicker": "Industrie",
+      "detail_titre": "Nettoyage propre pour maintenance et production",
+      "detail_lead": "Retrait de rouille, huile, graisse, anciennes peintures, résidus de production et préparation des supports sans projection d'abrasif.",
+      "detail_image": "assets/detail_laser.webp",
+      "image_droite": false,
+      "chips": null,
+      "info_panel": "machines, moules, outillages, pièces mécaniques, structures métalliques, maintenance, préparation avant peinture.",
+      "citation": null
+    },
+    {
+      "id": "patrimoine",
+      "icon": "assets/icon/patrimoine.webp",
+      "card_titre": "PATRIMOINE",
+      "card_desc": "Monuments historiques, menuiseries anciennes, ferronneries, pierre naturelle et restauration du patrimoine...",
+      "detail_kicker": "Spécialité patrimoine",
+      "detail_titre": "La précision au service des matériaux anciens",
+      "detail_lead": "Une activité laser appuyée sur un savoir-faire de menuisier en restauration du patrimoine : bois anciens, moulures, ferronneries, pierre et ouvrages délicats.",
+      "detail_image": "assets/decapage-bois-porte.webp",
+      "image_droite": true,
+      "chips": ["Bois ancien", "Ferronnerie", "Pierre", "Monuments Historiques"],
+      "info_panel": null,
+      "citation": "Décapage Laser • Patrimoine • Industrie"
+    }
+  ]
+}

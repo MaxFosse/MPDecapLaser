@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════
-   GALERIE — chargement depuis content/galerie.json
+   GALERIE -> chargement depuis content/galerie.json
 ═══════════════════════════════════════════════════════════ */
 
 function openLightbox(src, alt) {

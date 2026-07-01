@@ -1,0 +1,28 @@
+{
+  "prestations": {
+    "titre": "Décapage laser bois, métal, pierre et nettoyage industriel",
+    "sous": "MP Décap Laser intervient pour enlever peinture, rouille, vernis, oxydation, graisse, huile, suie, pollution et contaminants.",
+    "services": [
+      { "titre": "Patrimoine & bâtiment",   "items": ["Fenêtres et volets anciens", "Portes, boiseries, moulures", "Pierre, façades, graffitis", "Ouvrages sensibles"] },
+      { "titre": "Industrie & maintenance", "items": ["Dégraissage de machines", "Nettoyage huile et résidus", "Moules, outillages, pièces", "Avant peinture ou soudure"] },
+      { "titre": "Métal & ferronnerie",     "items": ["Rouille et oxydation", "Peinture industrielle", "Portails et garde-corps", "Préparation avant finition"] },
+      { "titre": "Bois",                    "items": ["Escaliers, poutres, bardages", "Menuiseries anciennes", "Sans ponçage agressif", "Respect des profils"] },
+      { "titre": "Automobile",              "items": ["Pièces mécaniques", "Châssis, supports, jantes", "Rouille, calamine, peinture", "Restauration et préparation"] },
+      { "titre": "Nautisme",                "items": ["Pièces métalliques", "Accastillage", "Supports oxydés ou peints", "Étude selon matière"] }
+    ]
+  },
+  "tarifs": {
+    "titre": "Étude personnalisée de votre projet",
+    "lead": "Chaque projet de décapage laser nécessite une étude préalable afin de déterminer la méthode d'intervention la plus adaptée.",
+    "panel_titre": "Comment obtenir un devis ?",
+    "panel_intro": "Afin d'établir une estimation précise, merci de transmettre :",
+    "panel_items": [
+      "Des photographies du support à traiter",
+      "Les dimensions approximatives",
+      "Le matériau concerné (bois, pierre, fonte, aluminium, etc.)",
+      "Le lieu d'intervention",
+      "Toutes informations utiles concernant l'état du support"
+    ],
+    "panel_conclusion": "Un devis personnalisé vous sera adressé après analyse de votre demande."
+  }
+}

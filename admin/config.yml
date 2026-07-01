@@ -1,5 +1,5 @@
 # ════════════════════════════════════════════════════════
-#  MP DÉCAP LASER — Configuration Sveltia CMS
+#  MP DÉCAP LASER (Configuration Sveltia CMS)
 #  Accès : https://votre-site.fr/admin/
 # ════════════════════════════════════════════════════════
 
@@ -17,208 +17,385 @@ locale: fr
 collections:
 
   # ══════════════════════════════════════════
-  #  PAGE D'ACCUEIL
+  #  HÉRO ET BANDEAU
   # ══════════════════════════════════════════
-  - name: accueil
-    label: "🏠 Page d'accueil"
+  - name: hero
+    label: "🎯 Héro (premier écran)"
     files:
-      - name: homepage
-        label: "Contenu de la page d'accueil"
-        file: content/homepage.json
+      - name: hero
+        label: "Premier écran et bandeau"
+        file: content/hero.json
         fields:
 
-          # ── Bandeau tagline ──────────────────
           - name: tagline_banner
-            label: "📢 Bandeau haut de page"
+            label: "Texte du bandeau doré (sous la navigation)"
             widget: string
-            hint: "Texte affiché dans le bandeau doré sous la navigation."
+            hint: "Phrase courte affichée dans le bandeau jaune tout en haut du site, juste sous le menu."
 
-          # ── HÉRO ────────────────────────────
-          - name: hero
-            label: "🎯 Section héro (premier écran)"
-            widget: object
+          - name: kicker
+            label: "Petite ligne au-dessus du titre principal"
+            widget: string
+            hint: "Texte discret affiché au-dessus du grand titre. Indique la zone géographique."
+
+          - name: h1_pre
+            label: "Titre principal : premier mot"
+            widget: string
+            hint: "Premier mot du grand titre affiché sur la page d'accueil. Ex : Décapage"
+
+          - name: h1_accent
+            label: "Titre principal : mot mis en doré"
+            widget: string
+            hint: "Ce mot apparaît en couleur dorée dans le titre. Ex : laser"
+
+          - name: h1_post
+            label: "Titre principal : suite du titre"
+            widget: string
+            hint: "Le reste du titre, sur la deuxième ligne. Ex : haute précision"
+
+          - name: lead
+            label: "Texte d'accroche (sous le titre)"
+            widget: text
+            hint: "Paragraphe affiché sous le grand titre. Décrit l'activité en quelques mots."
+
+          - name: btn_primary
+            label: "Texte du bouton principal (doré)"
+            widget: string
+            hint: "Bouton qui renvoie vers le formulaire de contact. Ex : Demander un devis"
+
+          - name: btn_secondary
+            label: "Texte du bouton secondaire (sombre)"
+            widget: string
+            hint: "Bouton qui renvoie vers la liste des prestations. Ex : Voir les prestations"
+
+          - name: badges
+            label: "Points forts (petites étiquettes en bas du héro)"
+            widget: list
+            allow_add: true
+            allow_delete: true
+            label_singular: Point fort
+            summary: "{{fields.titre}}"
+            hint: "Ces 4 étiquettes résument les avantages du service. Vous pouvez en ajouter ou en supprimer."
             fields:
-              - { name: kicker,        label: "Petite ligne au-dessus du titre (zone géographique)",  widget: string }
-              - { name: h1_pre,        label: "Titre principal — premier mot",  widget: string, hint: "Ex : Décapage" }
-              - { name: h1_accent,     label: "Titre principal — mot en doré",  widget: string, hint: "Ex : laser" }
-              - { name: h1_post,       label: "Titre principal — suite",        widget: string, hint: "Ex : haute précision" }
-              - { name: lead,          label: "Texte d'accroche sous le titre", widget: text }
-              - { name: btn_primary,   label: "Bouton principal",               widget: string }
-              - { name: btn_secondary, label: "Bouton secondaire",              widget: string }
-              - name: badges
-                label: "Badges (points forts en bas du héro)"
+              - name: titre
+                label: "Titre du point fort"
+                widget: string
+                hint: "Ex : Précision maximale"
+              - name: sous
+                label: "Précision en dessous"
+                widget: string
+                hint: "Texte plus petit sous le titre. Ex : Travail localisé"
+
+  # ══════════════════════════════════════════
+  #  RÉALISATIONS ET VIDÉO
+  # ══════════════════════════════════════════
+  - name: realisations
+    label: "📸 Réalisations et vidéo"
+    files:
+      - name: realisations
+        label: "Photos de réalisations et vidéo"
+        file: content/realisations.json
+        fields:
+
+          - name: titre
+            label: "Titre de la section Réalisations"
+            widget: string
+            hint: "Grand titre affiché au-dessus de la galerie de photos."
+
+          - name: sous
+            label: "Sous-titre de la section Réalisations"
+            widget: string
+            hint: "Courte description affichée sous le titre de la galerie."
+
+          - name: cartes
+            label: "Photos de la galerie"
+            widget: list
+            allow_add: true
+            allow_delete: true
+            label_singular: Photo
+            summary: "{{fields.titre}}"
+            hint: "Ajoutez ou supprimez des photos. Les 6 premières apparaissent sur deux rangées, les suivantes sur une rangée centrée."
+            fields:
+              - name: image
+                label: "Photo"
+                widget: image
+                hint: "Choisissez la photo à afficher dans la carte."
+              - name: titre
+                label: "Titre de la carte"
+                widget: string
+                hint: "Ex : Décapage bois"
+              - name: desc
+                label: "Description de la carte"
+                widget: text
+                hint: "Quelques mots qui décrivent ce que montre la photo."
+              - name: alt
+                label: "Description pour les moteurs de recherche (SEO)"
+                widget: string
+                hint: "Décrivez la photo en une phrase. Non visible par les visiteurs, utilisé par Google."
+              - name: centree
+                label: "Afficher cette carte seule sur sa ligne"
+                widget: boolean
+                default: false
+                hint: "Activez si vous voulez que cette carte soit centrée seule, sur une ligne à part."
+
+          - name: graffiti
+            label: "Bloc graffitis et tags"
+            widget: object
+            hint: "Section dédiée à l'effacement de graffitis, affichée sous la galerie de photos."
+            fields:
+              - name: titre
+                label: "Titre du bloc graffitis"
+                widget: string
+                hint: "Ex : Effacement de graffitis et tags"
+              - name: texte
+                label: "Texte d'introduction"
+                widget: text
+                hint: "Paragraphe de présentation du service graffitis."
+              - name: applications
+                label: "Liste des surfaces traitées"
                 widget: list
-                allow_add: true
-                allow_delete: true
-                label_singular: Badge
-                summary: "{{fields.titre}}"
-                fields:
-                  - { name: titre, label: "Titre du badge",      widget: string }
-                  - { name: sous,  label: "Sous-texte du badge", widget: string }
-
-          # ── RÉALISATIONS ────────────────────
-          - name: realisations
-            label: "📸 Réalisations (galerie principale)"
-            widget: object
-            fields:
-              - { name: titre, label: "Titre de la section", widget: string }
-              - { name: sous,  label: "Sous-titre",          widget: string }
-              - name: cartes
-                label: "Cartes photos"
+                hint: "Chaque ligne correspond à une puce dans la liste."
+                field: { name: item, label: Surface, widget: string }
+              - name: avantages
+                label: "Liste des avantages (avec coche)"
                 widget: list
-                allow_add: true
-                allow_delete: true
-                label_singular: Photo
-                summary: "{{fields.titre}}"
-                fields:
-                  - { name: image,  label: "Photo",              widget: image }
-                  - { name: alt,    label: "Description (SEO)",  widget: string }
-                  - { name: titre,  label: "Titre",              widget: string }
-                  - { name: desc,   label: "Description",        widget: text }
-                  - name: centree
-                    label: "Carte centrée (ligne séparée)"
-                    widget: boolean
-                    default: false
-                    hint: "Activez pour les cartes qui apparaissent seules sur leur ligne."
-              - name: graffiti
-                label: "Bloc graffitis"
-                widget: object
-                fields:
-                  - { name: titre, label: "Titre",                widget: string }
-                  - { name: texte, label: "Texte d'introduction", widget: text }
-                  - name: applications
-                    label: "Applications (liste à puces)"
-                    widget: list
-                    field: { name: item, label: Application, widget: string }
-                  - name: avantages
-                    label: "Avantages (liste avec ✓)"
-                    widget: list
-                    field: { name: item, label: Avantage, widget: string }
+                hint: "Chaque ligne apparaît avec une coche verte devant."
+                field: { name: item, label: Avantage, widget: string }
 
-          # ── VIDÉO ───────────────────────────
-          - name: video
-            label: "🎬 Section vidéo"
-            widget: object
-            fields:
-              - { name: kicker, label: "Petite ligne au-dessus du titre", widget: string }
-              - { name: titre,  label: "Titre de la section",             widget: string }
-              - name: src
-                label: "Fichier vidéo"
-                widget: file
-                hint: "Remplacez la vidéo ici. Formats acceptés : MP4, WebM."
-                media_library:
-                  config:
-                    multiple: false
+          - name: video_kicker
+            label: "Petite ligne au-dessus du titre vidéo"
+            widget: string
+            hint: "Texte discret affiché au-dessus du titre de la section vidéo. Ex : Démonstration"
 
-          # ── ACTIVITÉS ───────────────────────
-          - name: activites
-            label: "⚙️ Activités (4 domaines d'intervention)"
-            widget: object
+          - name: video_titre
+            label: "Titre de la section vidéo"
+            widget: string
+            hint: "Grand titre affiché au-dessus du lecteur vidéo."
+
+          - name: video_src
+            label: "Fichier vidéo"
+            widget: file
+            hint: "Remplacez la vidéo principale du site ici. Format MP4 recommandé. Attention : les vidéos lourdes peuvent prendre du temps à s'uploader."
+            media_library:
+              config:
+                multiple: false
+
+  # ══════════════════════════════════════════
+  #  ACTIVITÉS
+  # ══════════════════════════════════════════
+  - name: activites
+    label: "⚙️ Activités"
+    files:
+      - name: activites
+        label: "Les 4 domaines d'intervention"
+        file: content/activites.json
+        fields:
+
+          - name: kicker
+            label: "Petite ligne au-dessus du titre"
+            widget: string
+            hint: "Texte discret au-dessus du titre de la section. Ex : Nos domaines d'intervention"
+
+          - name: titre
+            label: "Titre de la section"
+            widget: string
+            hint: "Grand titre affiché au-dessus des 4 cartes d'activités."
+
+          - name: items
+            label: "Les 4 activités"
+            widget: list
+            allow_add: false
+            allow_delete: false
+            label_singular: Activité
+            summary: "{{fields.card_titre}}"
+            hint: "Vous pouvez modifier le contenu de chaque activité, mais pas en ajouter ou en supprimer."
             fields:
-              - { name: kicker, label: "Petite ligne au-dessus du titre", widget: string }
-              - { name: titre,  label: "Titre de la section",             widget: string }
-              - name: items
-                label: "Les 4 activités"
+              - name: id
+                label: "⚠️ CODE INTERNE - NE PAS MODIFIER"
+                widget: string
+                hint: "⚠️ ATTENTION : ne changez jamais cette valeur. Si vous la modifiez, la page ne fonctionnera plus correctement."
+              - name: card_titre
+                label: "Titre affiché sur la carte"
+                widget: string
+                hint: "Titre en majuscules visible sur la carte de la grille. Ex : PARTICULIERS"
+              - name: card_desc
+                label: "Description sur la carte"
+                widget: text
+                hint: "Courte description visible sur la carte de la grille, avant de cliquer."
+              - name: icon
+                label: "Icône de la carte"
+                widget: image
+                hint: "Petite image affichée en haut de la carte."
+              - name: detail_titre
+                label: "Titre de la page détail"
+                widget: string
+                hint: "Grand titre affiché quand on clique sur la carte pour voir le détail."
+              - name: detail_lead
+                label: "Texte d'introduction (page détail)"
+                widget: text
+                hint: "Paragraphe d'accroche visible sur la page de détail de cette activité."
+              - name: detail_image
+                label: "Photo (page détail)"
+                widget: image
+                hint: "Photo illustrative affichée sur la page de détail."
+              - name: detail_kicker
+                label: "Petite ligne au-dessus du titre (page détail)"
+                widget: string
+                hint: "Texte discret au-dessus du titre sur la page de détail."
+              - name: chips
+                label: "Mots-clés (petites étiquettes)"
                 widget: list
-                allow_add: false
-                allow_delete: false
-                label_singular: Activité
-                summary: "{{fields.card_titre}}"
-                fields:
-                  - { name: id,            label: "Identifiant (ne pas modifier)",          widget: string }
-                  - { name: icon,          label: "Icône de la carte",                      widget: image }
-                  - { name: card_titre,    label: "Titre de la carte",                      widget: string }
-                  - { name: card_desc,     label: "Description de la carte",                widget: text }
-                  - { name: detail_kicker, label: "Petite ligne au-dessus du titre détail", widget: string }
-                  - { name: detail_titre,  label: "Titre de la page détail",                widget: string }
-                  - { name: detail_lead,   label: "Texte d'introduction (page détail)",     widget: text }
-                  - { name: detail_image,  label: "Photo (page détail)",                    widget: image }
-                  - name: image_droite
-                    label: "Image à droite"
-                    widget: boolean
-                    default: true
-                    hint: "Si activé : texte à gauche, image à droite. Sinon : inversé."
-                  - name: chips
-                    label: "Mots-clés (petites étiquettes)"
-                    widget: list
-                    required: false
-                    hint: "Laissez vide pour Industrie (utilise un bloc d'info à la place)."
-                    field: { name: item, label: Mot-clé, widget: string }
-                  - name: info_panel
-                    label: "Bloc d'applications (Industrie uniquement)"
-                    widget: text
-                    required: false
-                    hint: "Pour Industrie seulement. Laissez vide pour les autres."
-                  - name: citation
-                    label: "Texte mis en avant avec bordure dorée (Patrimoine uniquement)"
-                    widget: string
-                    required: false
-                    hint: "Laissez vide si inutile."
+                required: false
+                hint: "Étiquettes affichées sous le texte. Laissez vide pour Industrie (qui utilise un bloc texte à la place)."
+                field: { name: item, label: Mot-clé, widget: string }
+              - name: info_panel
+                label: "Bloc d'applications (Industrie uniquement)"
+                widget: text
+                required: false
+                hint: "Texte du bloc Applications, visible uniquement pour l'activité Industrie. Laissez vide pour les autres."
+              - name: citation
+                label: "Texte mis en avant avec bordure dorée"
+                widget: string
+                required: false
+                hint: "Phrase affichée en grand avec une bordure dorée à gauche. Laissez vide si vous n'en avez pas besoin."
+              - name: image_droite
+                label: "Photo à droite du texte"
+                widget: boolean
+                default: true
+                hint: "Activé : la photo est à droite, le texte à gauche. Désactivé : la photo est à gauche, le texte à droite."
 
-          # ── PRESTATIONS ─────────────────────
+  # ══════════════════════════════════════════
+  #  PRESTATIONS ET TARIFS
+  # ══════════════════════════════════════════
+  - name: prestations_tarifs
+    label: "🔧 Prestations et tarifs"
+    files:
+      - name: prestations_tarifs
+        label: "Prestations et section tarifs"
+        file: content/prestations.json
+        fields:
+
           - name: prestations
-            label: "🔧 Prestations"
+            label: "Section Prestations"
             widget: object
             fields:
-              - { name: titre, label: "Titre de la section", widget: string }
-              - { name: sous,  label: "Sous-titre",          widget: text }
+              - name: titre
+                label: "Titre de la section"
+                widget: string
+                hint: "Grand titre affiché au-dessus des cartes de prestations."
+              - name: sous
+                label: "Sous-titre"
+                widget: text
+                hint: "Courte description affichée sous le titre de la section."
               - name: services
-                label: "Services (cartes)"
+                label: "Cartes de services"
                 widget: list
                 allow_add: true
                 allow_delete: true
                 label_singular: Service
                 summary: "{{fields.titre}}"
+                hint: "Chaque carte représente un domaine d'intervention. Vous pouvez en ajouter ou en supprimer."
                 fields:
-                  - { name: titre, label: "Nom du service", widget: string }
+                  - name: titre
+                    label: "Nom du service"
+                    widget: string
+                    hint: "Titre de la carte. Ex : Patrimoine & bâtiment"
                   - name: items
-                    label: "Prestations incluses"
+                    label: "Prestations incluses dans ce service"
                     widget: list
+                    hint: "Chaque ligne correspond à une puce dans la liste de la carte."
                     field: { name: item, label: Prestation, widget: string }
 
-          # ── TARIFS ──────────────────────────
           - name: tarifs
-            label: "💰 Tarifs / Devis"
+            label: "Section Tarifs / Devis"
             widget: object
             fields:
-              - { name: titre,            label: "Titre de la section",      widget: string }
-              - { name: lead,             label: "Texte d'introduction",     widget: text }
-              - { name: panel_titre,      label: "Titre du bloc devis",      widget: string }
-              - { name: panel_intro,      label: "Phrase d'intro du bloc",   widget: string }
+              - name: titre
+                label: "Titre de la section"
+                widget: string
+                hint: "Grand titre affiché au-dessus du bloc devis."
+              - name: lead
+                label: "Texte d'introduction"
+                widget: text
+                hint: "Paragraphe affiché sous le titre, avant le bloc devis."
+              - name: panel_titre
+                label: "Titre du bloc devis"
+                widget: string
+                hint: "Titre à l'intérieur du bloc encadré. Ex : Comment obtenir un devis ?"
+              - name: panel_intro
+                label: "Phrase d'introduction du bloc devis"
+                widget: string
+                hint: "Phrase courte avant la liste des éléments à fournir."
               - name: panel_items
                 label: "Éléments à fournir pour le devis"
                 widget: list
+                hint: "Chaque ligne correspond à un point de la liste dans le bloc devis."
                 field: { name: item, label: Élément, widget: string }
-              - { name: panel_conclusion, label: "Phrase de conclusion",     widget: string }
-
-          # ── CONTACT ─────────────────────────
-          - name: contact
-            label: "📞 Informations de contact"
-            widget: object
-            fields:
-              - { name: kicker,    label: "Petite ligne au-dessus du titre", widget: string }
-              - { name: titre,     label: "Titre de la section",             widget: string }
-              - { name: telephone, label: "Téléphone",                       widget: string, hint: "Ex : 06 84 78 99 84" }
-              - { name: email,     label: "Email",                           widget: string }
-              - { name: adresse,   label: "Adresse",                         widget: string }
-              - { name: zone,      label: "Zone d'intervention",             widget: string }
-              - { name: tagline,   label: "Slogan affiché sous l'adresse",  widget: string }
+              - name: panel_conclusion
+                label: "Phrase de conclusion"
+                widget: string
+                hint: "Phrase affichée après la liste, en bas du bloc devis."
 
   # ══════════════════════════════════════════
-  #  PAGE GALERIE
+  #  CONTACT
+  # ══════════════════════════════════════════
+  - name: contact
+    label: "📞 Contact"
+    files:
+      - name: contact
+        label: "Informations de contact"
+        file: content/contact.json
+        fields:
+
+          - name: titre
+            label: "Titre de la section"
+            widget: string
+            hint: "Grand titre affiché au-dessus du formulaire de contact. Ex : Demandez un devis"
+
+          - name: telephone
+            label: "Numéro de téléphone"
+            widget: string
+            hint: "Affiché dans l'encart de contact et dans la barre de navigation. Ex : 06 84 78 99 84"
+
+          - name: email
+            label: "Adresse email"
+            widget: string
+            hint: "Adresse email affichée et utilisée comme lien cliquable dans la section contact."
+
+          - name: adresse
+            label: "Adresse"
+            widget: string
+            hint: "Adresse ou ville affichée dans l'encart de contact."
+
+          - name: zone
+            label: "Zone d'intervention"
+            widget: string
+            hint: "Régions ou pays couverts, affichés sous l'adresse. Ex : Bourgogne-Franche-Comté • Grand Est • Suisse Romande"
+
+          - name: tagline
+            label: "Slogan affiché sous l'adresse"
+            widget: string
+            hint: "Courte phrase en doré affichée en bas de l'encart de contact."
+
+          - name: kicker
+            label: "Petite ligne au-dessus du titre"
+            widget: string
+            hint: "Texte discret affiché au-dessus du titre de la section contact."
+
+  # ══════════════════════════════════════════
+  #  GALERIE
   # ══════════════════════════════════════════
   - name: galerie
-    label: "🖼️ Galerie vidéos & photos"
+    label: "🖼️ Galerie (photos et vidéos)"
     files:
       - name: galerie
-        label: "Contenu de la galerie"
+        label: "Photos et vidéos de la galerie"
         file: content/galerie.json
         fields:
-          - { name: hero_sous,     label: "Texte sous le titre de la galerie",         widget: string }
-          - { name: videos_kicker, label: "Petite ligne au-dessus du titre Vidéos",    widget: string }
-          - { name: videos_titre,  label: "Titre de la section Vidéos",                widget: string }
-          - { name: photos_kicker, label: "Petite ligne au-dessus du titre Photos",    widget: string }
-          - { name: photos_titre,  label: "Titre de la section Photos",                widget: string }
+
+          - name: hero_sous
+            label: "Texte sous le titre de la galerie"
+            widget: string
+            hint: "Phrase descriptive affichée sous le titre de la page galerie."
 
           - name: videos
             label: "Vidéos"
@@ -227,9 +404,19 @@ collections:
             allow_delete: true
             label_singular: Vidéo
             summary: "{{fields.caption}}"
+            hint: "Ajoutez ou supprimez des vidéos. Elles apparaissent dans la section Démonstrations."
             fields:
-              - { name: src,     label: "Fichier vidéo", widget: file, media_library: { config: { multiple: false } } }
-              - { name: caption, label: "Légende",        widget: string }
+              - name: src
+                label: "Fichier vidéo"
+                widget: file
+                hint: "Uploadez votre fichier vidéo. Format MP4 recommandé."
+                media_library:
+                  config:
+                    multiple: false
+              - name: caption
+                label: "Légende"
+                widget: string
+                hint: "Texte affiché sous la vidéo. Ex : Décapage laser sur bois"
 
           - name: photos
             label: "Photos"
@@ -238,7 +425,37 @@ collections:
             allow_delete: true
             label_singular: Photo
             summary: "{{fields.caption}}"
+            hint: "Ajoutez ou supprimez des photos. Elles apparaissent dans la section Réalisations avec un agrandissement au clic."
             fields:
-              - { name: image,   label: "Photo",             widget: image }
-              - { name: alt,     label: "Description (SEO)", widget: string }
-              - { name: caption, label: "Légende",           widget: string }
+              - name: image
+                label: "Photo"
+                widget: image
+                hint: "Choisissez la photo à afficher dans la galerie."
+              - name: caption
+                label: "Légende"
+                widget: string
+                hint: "Texte affiché sous la photo. Ex : Élimination de rouille"
+              - name: alt
+                label: "Description pour les moteurs de recherche (SEO)"
+                widget: string
+                hint: "Décrivez la photo en une phrase. Non visible par les visiteurs, utilisé par Google."
+
+          - name: videos_kicker
+            label: "Petite ligne au-dessus du titre Vidéos"
+            widget: string
+            hint: "Texte discret affiché au-dessus du titre de la section vidéos."
+
+          - name: videos_titre
+            label: "Titre de la section Vidéos"
+            widget: string
+            hint: "Grand titre affiché au-dessus de la liste des vidéos."
+
+          - name: photos_kicker
+            label: "Petite ligne au-dessus du titre Photos"
+            widget: string
+            hint: "Texte discret affiché au-dessus du titre de la section photos."
+
+          - name: photos_titre
+            label: "Titre de la section Photos"
+            widget: string
+            hint: "Grand titre affiché au-dessus de la grille de photos."
