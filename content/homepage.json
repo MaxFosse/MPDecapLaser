@@ -51,7 +51,8 @@
 
   "video": {
     "kicker": "Démonstration",
-    "titre": "Vidéo de décapage laser"
+    "titre": "Vidéo de décapage laser",
+    "src": "assets/decapage-bois-video.mp4"
   },
 
   "activites": {

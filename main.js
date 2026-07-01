@@ -139,6 +139,10 @@ function renderHomepage(d) {
   const v = d.video;
   if (el('video-kicker')) el('video-kicker').textContent = v.kicker;
   if (el('video-titre'))  el('video-titre').textContent  = v.titre;
+  if (v.src && el('main-video-source')) {
+    el('main-video-source').src = v.src;
+    el('main-video').load();
+  }
 
   /* ── Activités ── */
   const act = d.activites;

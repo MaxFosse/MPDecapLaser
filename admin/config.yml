@@ -1,9 +1,6 @@
 # ════════════════════════════════════════════════════════
 #  MP DÉCAP LASER — Configuration Sveltia CMS
 #  Accès : https://votre-site.fr/admin/
-#
-#  ⚠️  Remplacez GITHUB_UTILISATEUR et GITHUB_REPO
-#      par vos vraies valeurs avant de déployer.
 # ════════════════════════════════════════════════════════
 
 backend:
@@ -41,15 +38,15 @@ collections:
             label: "🎯 Section héro (premier écran)"
             widget: object
             fields:
-              - { name: kicker,        label: "Sous-titre géographique",  widget: string }
-              - { name: h1_pre,        label: "H1 — mot avant l'accent",  widget: string, hint: "Ex : Décapage" }
-              - { name: h1_accent,     label: "H1 — mot en or",           widget: string, hint: "Ex : laser" }
-              - { name: h1_post,       label: "H1 — suite du titre",      widget: string, hint: "Ex : haute précision" }
-              - { name: lead,          label: "Phrase d'accroche",        widget: text }
-              - { name: btn_primary,   label: "Bouton principal",         widget: string }
-              - { name: btn_secondary, label: "Bouton secondaire",        widget: string }
+              - { name: kicker,        label: "Petite ligne au-dessus du titre (zone géographique)",  widget: string }
+              - { name: h1_pre,        label: "Titre principal — premier mot",  widget: string, hint: "Ex : Décapage" }
+              - { name: h1_accent,     label: "Titre principal — mot en doré",  widget: string, hint: "Ex : laser" }
+              - { name: h1_post,       label: "Titre principal — suite",        widget: string, hint: "Ex : haute précision" }
+              - { name: lead,          label: "Texte d'accroche sous le titre", widget: text }
+              - { name: btn_primary,   label: "Bouton principal",               widget: string }
+              - { name: btn_secondary, label: "Bouton secondaire",              widget: string }
               - name: badges
-                label: "Badges (points forts)"
+                label: "Badges (points forts en bas du héro)"
                 widget: list
                 allow_add: true
                 allow_delete: true
@@ -64,8 +61,8 @@ collections:
             label: "📸 Réalisations (galerie principale)"
             widget: object
             fields:
-              - { name: titre,     label: "Titre de la section",    widget: string }
-              - { name: sous,      label: "Sous-titre",             widget: string }
+              - { name: titre, label: "Titre de la section", widget: string }
+              - { name: sous,  label: "Sous-titre",          widget: string }
               - name: cartes
                 label: "Cartes photos"
                 widget: list
@@ -87,8 +84,8 @@ collections:
                 label: "Bloc graffitis"
                 widget: object
                 fields:
-                  - { name: titre,        label: "Titre",                 widget: string }
-                  - { name: texte,        label: "Texte d'introduction",  widget: text }
+                  - { name: titre, label: "Titre",                widget: string }
+                  - { name: texte, label: "Texte d'introduction", widget: text }
                   - name: applications
                     label: "Applications (liste à puces)"
                     widget: list
@@ -103,16 +100,23 @@ collections:
             label: "🎬 Section vidéo"
             widget: object
             fields:
-              - { name: kicker, label: "Kicker (petit texte doré au-dessus)", widget: string }
-              - { name: titre,  label: "Titre",                               widget: string }
+              - { name: kicker, label: "Petite ligne au-dessus du titre", widget: string }
+              - { name: titre,  label: "Titre de la section",             widget: string }
+              - name: src
+                label: "Fichier vidéo"
+                widget: file
+                hint: "Remplacez la vidéo ici. Formats acceptés : MP4, WebM."
+                media_library:
+                  config:
+                    multiple: false
 
           # ── ACTIVITÉS ───────────────────────
           - name: activites
             label: "⚙️ Activités (4 domaines d'intervention)"
             widget: object
             fields:
-              - { name: kicker, label: "Kicker",                    widget: string }
-              - { name: titre,  label: "Titre de la section",       widget: string }
+              - { name: kicker, label: "Petite ligne au-dessus du titre", widget: string }
+              - { name: titre,  label: "Titre de la section",             widget: string }
               - name: items
                 label: "Les 4 activités"
                 widget: list
@@ -121,21 +125,21 @@ collections:
                 label_singular: Activité
                 summary: "{{fields.card_titre}}"
                 fields:
-                  - { name: id,            label: "Identifiant (ne pas modifier)", widget: string }
-                  - { name: icon,          label: "Icône de la carte",             widget: image }
-                  - { name: card_titre,    label: "Titre carte",                   widget: string }
-                  - { name: card_desc,     label: "Description carte",             widget: text }
-                  - { name: detail_kicker, label: "Kicker page détail",            widget: string }
-                  - { name: detail_titre,  label: "Titre page détail",             widget: string }
-                  - { name: detail_lead,   label: "Phrase d'intro détail",         widget: text }
-                  - { name: detail_image,  label: "Photo page détail",             widget: image }
+                  - { name: id,            label: "Identifiant (ne pas modifier)",          widget: string }
+                  - { name: icon,          label: "Icône de la carte",                      widget: image }
+                  - { name: card_titre,    label: "Titre de la carte",                      widget: string }
+                  - { name: card_desc,     label: "Description de la carte",                widget: text }
+                  - { name: detail_kicker, label: "Petite ligne au-dessus du titre détail", widget: string }
+                  - { name: detail_titre,  label: "Titre de la page détail",                widget: string }
+                  - { name: detail_lead,   label: "Texte d'introduction (page détail)",     widget: text }
+                  - { name: detail_image,  label: "Photo (page détail)",                    widget: image }
                   - name: image_droite
                     label: "Image à droite"
                     widget: boolean
                     default: true
                     hint: "Si activé : texte à gauche, image à droite. Sinon : inversé."
                   - name: chips
-                    label: "Mots-clés (chips)"
+                    label: "Mots-clés (petites étiquettes)"
                     widget: list
                     required: false
                     hint: "Laissez vide pour Industrie (utilise un bloc d'info à la place)."
@@ -146,10 +150,10 @@ collections:
                     required: false
                     hint: "Pour Industrie seulement. Laissez vide pour les autres."
                   - name: citation
-                    label: "Citation mise en avant (Patrimoine uniquement)"
+                    label: "Texte mis en avant avec bordure dorée (Patrimoine uniquement)"
                     widget: string
                     required: false
-                    hint: "Texte affiché en gros avec bordure dorée. Laissez vide si inutile."
+                    hint: "Laissez vide si inutile."
 
           # ── PRESTATIONS ─────────────────────
           - name: prestations
@@ -177,28 +181,28 @@ collections:
             label: "💰 Tarifs / Devis"
             widget: object
             fields:
-              - { name: titre,          label: "Titre de la section",   widget: string }
-              - { name: lead,           label: "Phrase d'introduction",  widget: text }
-              - { name: panel_titre,    label: "Titre du bloc devis",   widget: string }
-              - { name: panel_intro,    label: "Intro du bloc devis",   widget: string }
+              - { name: titre,            label: "Titre de la section",      widget: string }
+              - { name: lead,             label: "Texte d'introduction",     widget: text }
+              - { name: panel_titre,      label: "Titre du bloc devis",      widget: string }
+              - { name: panel_intro,      label: "Phrase d'intro du bloc",   widget: string }
               - name: panel_items
                 label: "Éléments à fournir pour le devis"
                 widget: list
                 field: { name: item, label: Élément, widget: string }
-              - { name: panel_conclusion, label: "Phrase de conclusion", widget: string }
+              - { name: panel_conclusion, label: "Phrase de conclusion",     widget: string }
 
           # ── CONTACT ─────────────────────────
           - name: contact
             label: "📞 Informations de contact"
             widget: object
             fields:
-              - { name: kicker,    label: "Kicker",      widget: string }
-              - { name: titre,     label: "Titre",        widget: string }
-              - { name: telephone, label: "Téléphone",   widget: string, hint: "Ex : 06 84 78 99 84" }
-              - { name: email,     label: "Email",        widget: string }
-              - { name: adresse,   label: "Adresse",      widget: string }
-              - { name: zone,      label: "Zone d'intervention", widget: string }
-              - { name: tagline,   label: "Slogan contact", widget: string }
+              - { name: kicker,    label: "Petite ligne au-dessus du titre", widget: string }
+              - { name: titre,     label: "Titre de la section",             widget: string }
+              - { name: telephone, label: "Téléphone",                       widget: string, hint: "Ex : 06 84 78 99 84" }
+              - { name: email,     label: "Email",                           widget: string }
+              - { name: adresse,   label: "Adresse",                         widget: string }
+              - { name: zone,      label: "Zone d'intervention",             widget: string }
+              - { name: tagline,   label: "Slogan affiché sous l'adresse",  widget: string }
 
   # ══════════════════════════════════════════
   #  PAGE GALERIE
@@ -210,11 +214,11 @@ collections:
         label: "Contenu de la galerie"
         file: content/galerie.json
         fields:
-          - { name: hero_sous,     label: "Texte sous le titre de la galerie", widget: string }
-          - { name: videos_kicker, label: "Kicker section vidéos",             widget: string }
-          - { name: videos_titre,  label: "Titre section vidéos",              widget: string }
-          - { name: photos_kicker, label: "Kicker section photos",             widget: string }
-          - { name: photos_titre,  label: "Titre section photos",              widget: string }
+          - { name: hero_sous,     label: "Texte sous le titre de la galerie",         widget: string }
+          - { name: videos_kicker, label: "Petite ligne au-dessus du titre Vidéos",    widget: string }
+          - { name: videos_titre,  label: "Titre de la section Vidéos",                widget: string }
+          - { name: photos_kicker, label: "Petite ligne au-dessus du titre Photos",    widget: string }
+          - { name: photos_titre,  label: "Titre de la section Photos",                widget: string }
 
           - name: videos
             label: "Vidéos"
@@ -224,7 +228,7 @@ collections:
             label_singular: Vidéo
             summary: "{{fields.caption}}"
             fields:
-              - { name: src,     label: "Fichier vidéo", widget: file,   media_library: { config: { multiple: false } } }
+              - { name: src,     label: "Fichier vidéo", widget: file, media_library: { config: { multiple: false } } }
               - { name: caption, label: "Légende",        widget: string }
 
           - name: photos
@@ -235,6 +239,6 @@ collections:
             label_singular: Photo
             summary: "{{fields.caption}}"
             fields:
-              - { name: image,   label: "Photo",              widget: image }
-              - { name: alt,     label: "Description (SEO)",  widget: string }
-              - { name: caption, label: "Légende",            widget: string }
+              - { name: image,   label: "Photo",             widget: image }
+              - { name: alt,     label: "Description (SEO)", widget: string }
+              - { name: caption, label: "Légende",           widget: string }
