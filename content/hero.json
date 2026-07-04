@@ -8,21 +8,9 @@
   "btn_primary": "Demander un devis",
   "btn_secondary": "Voir les prestations",
   "badges": [
-    {
-      "titre": "Précision maximale",
-      "sous": "Travail localisé"
-    },
-    {
-      "titre": "Solution écologique",
-      "sous": "Sans abrasif"
-    },
-    {
-      "titre": "Sans produit chimique",
-      "sous": "Peu de déchets"
-    },
-    {
-      "titre": "Efficace",
-      "sous": "Ramène la matière d'origine"
-    }
+    { "titre": "Précision maximale",    "sous": "Travail localisé" },
+    { "titre": "Solution écologique",   "sous": "Sans abrasif" },
+    { "titre": "Sans produit chimique", "sous": "Peu de déchets" },
+    { "titre": "Efficace",              "sous": "Ramène la matière d'origine" }
   ]
 }
