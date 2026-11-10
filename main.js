@@ -1,4 +1,9 @@
 /* ═══════════════════════════════════════════════════════════
+   ANNÉE PIED DE PAGE
+═══════════════════════════════════════════════════════════ */
+document.querySelectorAll('[data-annee]').forEach(span => { span.textContent = new Date().getFullYear(); });
+
+/* ═══════════════════════════════════════════════════════════
    MENU MOBILE
 ═══════════════════════════════════════════════════════════ */
 function toggleMobileMenu() {
