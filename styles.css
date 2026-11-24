@@ -679,7 +679,19 @@ footer {
     border-top: 1px solid rgba(255,255,255,.04);
 }
 
-.footer-legal-link { 
+.footer-mt2m {
+    margin: 8px 0 0;
+    font-size: 12px;
+}
+
+.footer-mt2m a {
+    color: var(--or2);
+    transition: color .2s;
+}
+
+.footer-mt2m a:hover { color: #fff; }
+
+.footer-legal-link {
     margin: 8px 0 0; 
     text-decoration: none;
 }
